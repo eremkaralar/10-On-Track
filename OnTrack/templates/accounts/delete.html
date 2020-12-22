@@ -1,0 +1,24 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+
+			<p>Are you giving up on your goal called  "{{item}}" :( ?</p>
+
+			<form action="{% url 'delete_goal' item.id  %}" method="POST">
+				
+				{% csrf_token %}
+				<a class="btn btn-primary" href="{% url 'habits' %}">Give it a second chance!</a>
+
+				<button class="btn btn-danger" type="submit">I'm quitting anyway.</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

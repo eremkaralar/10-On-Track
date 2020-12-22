@@ -1,0 +1,45 @@
+
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    
+</style>    
+    <title>On Track</title>
+    
+</head>
+<body>
+    <h1>Hey {{request.user.first_name}}, welcome to 10-Track! </h1>
+    <p>
+         
+    </p>
+
+    <div class="card card-body">
+        <h5>Current Habits</h5>
+    </div>
+    <div class="card card-body">
+        <table class="table">
+            <tr>
+                <th>Habit Name</th>
+                <th>Habit Type</th>
+                <th>Current habit repetition</th>
+                <th>Motivational Note</th>
+
+                
+            </tr>
+
+            
+            
+        </table>
+
+
+
+    
+</body>
+</html>
+
+{% endblock %}

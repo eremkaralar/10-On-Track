@@ -1,0 +1,47 @@
+
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Future Habits</h5>
+				</div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Habits</th>
+							<th>Targeted habit repetition</th>
+							
+						</tr>
+
+						{% for goal in goals %}
+							<tr>
+								<td>{{goal.goalname}}</td>
+								<td>{{goal.goalstepset}}</td>
+								<td><a class="btn btn-sm btn-info" href="{% url 'update_goal' goal.id %}">Update the Goal</a></td>
+								<td><a class="btn btn-sm btn-danger" href="{% url 'delete_goal' goal.id %}">Delete the Goal</a></td>
+								
+							</tr>
+						{% endfor %}
+						
+						
+						
+						
+					</table>
+					
+					<td><a class="btn btn-sm btn-info" href="{% url 'create_goal' 1 %}">Create a Goal</a></td>
+					
+				
+				</div>
+
+
+				
+			</div>
+			
+		</div>
+
+{% endblock content %}

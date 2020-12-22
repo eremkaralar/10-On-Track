@@ -1,8 +1,7 @@
 from django.contrib import admin
 from .models import *
 
-# Register your models here.
-
+# Register models here.
 
 admin.site.register(Goals)
 admin.site.register(Customer)

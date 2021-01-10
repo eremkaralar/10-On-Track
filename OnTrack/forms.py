@@ -19,9 +19,12 @@ class CreateUserForm(UserCreationForm):
 
 
 class GoalsForm(forms.ModelForm):
-	'''goalname= forms.CharField(widget= forms.TextInput(attrs={'placeholder':'Add a new goal...'}))
-	goalstepset=forms.IntegerField(widget=forms.NumberInput(attrs={'placeholder':'Targeted number of repetitions...'}))'''
-
 	class Meta:
 		model = Goals
-		fields = ['goalname','goalstepset']
+		fields = ['goalname','goalstepset','goalcompleteset']
+
+
+class HabitsForm(forms.ModelForm):
+	class Meta:
+		model = Habits
+		fields = ['habitname','habittype','habitcount','habitmotivationnote']

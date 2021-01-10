@@ -7,19 +7,26 @@
 <html>
 <head>
 <style>
+   h1 {
+  text-align: center;
+    }   
+    .card-body {
+    text-align: center;
     
+    }
 </style>    
     <title>On Track</title>
     
 </head>
 <body>
+    <br>
     <h1>Hey {{request.user.first_name}}, welcome to 10-Track! </h1>
+    <hr>
     <p>
-         
+        Get ready to create your habit journal to be 10-Track !
     </p>
-
     <div class="card card-body">
-        <h5>Current Habits</h5>
+        <h5>{{request.user.first_name}}'s Current Habits</h5>
     </div>
     <div class="card card-body">
         <table class="table">
@@ -32,12 +39,29 @@
                 
             </tr>
 
+            {% for habit in habits %}
+				<tr>
+
+					<td>{{habit.habitname}}</td>
+                    <td>{{habit.habittype}}</td>
+                    <td>{{habit.habitcount}}</td>
+                    <td>{{habit.habitmotivationnote}}</td>
+                                
+					<td><a class="btn btn-sm btn-info" href="{% url 'update_habit' habit.id %}">Update the Habit</a></td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete_habit' habit.id %}">Delete the Habit</a></td>
+                    
+                </tr>
+                
+			{% endfor %}
+						
+						
+					</table>
+					
+					<td><a class="btn btn-sm btn-success" href="{% url 'create_habit' 1 %}">Save a Habit</a></td>
+
             
             
-        </table>
-
-
-
+       
     
 </body>
 </html>

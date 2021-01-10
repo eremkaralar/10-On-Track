@@ -7,11 +7,15 @@
     font-size: 18px;
     color: #fff;
     margin-right: 20px;
+    text-align: center;
   }
+
+
+  
 </style>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
- <!--img src="{% static 'images/logo.png' %}"-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+ 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -23,8 +27,12 @@
        <li class="nav-item active">
         <a class="nav-link" href="{% url 'habits' %}">Future {{request.user.first_name}} </a>
        </li>
-      
+       
     </ul>
+    
+      <img src="{% static 'images/tentrac.png' %}" style="width: 3vw; min-width: 4px; left:50%; margin-left: 30vw;">
+    
+    
   </div>
  
   <span class="hello-msg">{{request.user}} is 10-Track!</span>

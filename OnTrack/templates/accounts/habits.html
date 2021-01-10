@@ -4,17 +4,23 @@
 {% block content %}
 
 		<br>
-
+		<h1>Welcome to the fuutuurreee {{request.user.first_name}}! </h1>
+		<hr>
+		<p>
+			Set your goals, check out the sustainability of your new future perpetual habit! Most of all, Keep 10-Track!
+		</p>
 		<div class="row">
 			<div class="col-md">
 				<div class="card card-body">
-					<h5>Future Habits</h5>
+					<h5>{{request.user.first_name}}'s Future Habits</h5>
 				</div>
 				<div class="card card-body">
 					<table class="table">
 						<tr>
 							<th>Habits</th>
 							<th>Targeted habit repetition</th>
+							<th>Completed habit repetition</th>
+							<th>Sustainability Rate</th>
 							
 						</tr>
 
@@ -22,6 +28,8 @@
 							<tr>
 								<td>{{goal.goalname}}</td>
 								<td>{{goal.goalstepset}}</td>
+								<td>{{goal.goalcompleteset}}</td>
+								<td>% {% widthratio goal.goalcompleteset goal.goalstepset 100 %}</td>
 								<td><a class="btn btn-sm btn-info" href="{% url 'update_goal' goal.id %}">Update the Goal</a></td>
 								<td><a class="btn btn-sm btn-danger" href="{% url 'delete_goal' goal.id %}">Delete the Goal</a></td>
 								
@@ -33,7 +41,7 @@
 						
 					</table>
 					
-					<td><a class="btn btn-sm btn-info" href="{% url 'create_goal' 1 %}">Create a Goal</a></td>
+					<td><a class="btn btn-sm btn-success" href="{% url 'create_goal' 1 %}">Create a Goal</a></td>
 					
 				
 				</div>

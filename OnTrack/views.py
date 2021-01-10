@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory
 from django.contrib.auth.forms import UserCreationForm
+from django.db.models import F
 
 
 from django.contrib.auth import authenticate, login, logout
@@ -65,7 +66,10 @@ def logoutUser(request):
 
 @login_required(login_url='login')
 def home(request):
-    return render(request, 'accounts/dashboard.html')
+	habits = Habits.objects.all()
+	context = {'habits':habits}
+
+	return render(request,'accounts/dashboard.html',context)
 
 
 @login_required(login_url='login')
@@ -99,6 +103,12 @@ def goals(request,pk):
 	return render(request,'accounts/goal_form.html',context)
 
 @login_required(login_url='login')
+def get_queryset(self, *args, **kwargs):
+     qset = super(goals, self).get_queryset(*args, **kwargs)
+     return qset.annotate(difference=F('var4') - F('var5'))
+
+
+@login_required(login_url='login')
 def updateGoals(request, pk):
 
 	goal = Goals.objects.get(id=pk)
@@ -126,3 +136,54 @@ def deleteGoals(request, pk):
 
 	context = {'item':goal}
 	return render(request, 'accounts/delete.html', context)
+
+
+
+
+@login_required(login_url='login')
+def createHabits(request,pk):
+	
+	customer = Customer.objects.get(id=1)
+	
+
+	if request.method =='POST':
+		form = HabitsForm(request.POST)
+		
+		if form.is_valid():
+			form.save()
+			return redirect('/')
+	else:
+		form = HabitsForm()
+
+	context = {'form':form}
+
+	return render(request,'accounts/habit_form.html',context)
+
+@login_required(login_url='login')
+def updateHabits(request, pk):
+
+	habit = Habits.objects.get(id=pk)
+	form = HabitsForm(instance=habit)
+	
+	if request.method == 'POST':
+		form = HabitsForm(request.POST, instance=habit)
+		if form.is_valid():
+			form.save()
+			return redirect('/')
+	else:
+		form = HabitsForm()
+
+	context = {'form':form}
+
+	return render(request, 'accounts/habit_form.html', context)
+
+@login_required(login_url='login')
+def deleteHabits(request, pk):
+	habit = Habits.objects.get(id=pk)
+	if request.method == "POST":
+		habit.delete()
+		return redirect('/')
+		
+
+	context = {'item':habit}
+	return render(request, 'accounts/habit_delete.html', context)

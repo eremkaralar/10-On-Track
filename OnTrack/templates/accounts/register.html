@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 <html>
     
@@ -14,13 +14,13 @@
 			margin: 0;
 			padding: 0;
 			height: 100%;
-			background: #8258e4 !important;
+			background: linear-gradient(to left, #33ccff 0%, #ff99cc 100%);
 		}
 		.user_card {
 			width: 350px;
 			margin-top: auto;
 			margin-bottom: auto;
-            background: #58dfe4;
+            background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%);
 			position: relative;
 			display: flex;
 			justify-content: center;
@@ -38,12 +38,12 @@
 		}
 
 		#form-title{
-			color: #fff;
+			background: linear-gradient(to right, #33ccff 0%, #ff99cc 100%);
 		}
 		.login_btn {
 			width: 100%;
-			background: #ff3333 !important;
-			color: white !important;
+			background: linear-gradient(to left, #d2fa88 0%, #83f1c3 100%);
+			color: black !important;
 		}
 		.login_btn:focus {
 			box-shadow: none !important;
@@ -53,7 +53,7 @@
 			padding: 0 2rem;
 		}
 		.input-group-text {
-			background: #3872ee !important;
+			background: linear-gradient(to left, #33ccff 0%, #924fff 100%);
 			color: white !important;
 			border: 0 !important;
 			border-radius: 0.25rem 0 0 0.25rem !important;
@@ -72,6 +72,7 @@
 	<div class="container h-100">
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
+				<img src="{% static 'images/tentrac.png' %}" style="width: 3vw; min-width: 4px; text-align: center; margin-left: 134px;">
 				<div class="d-flex justify-content-center">
 					<h3 id="form-title">TO KEEP 10-TRACK</h3>
 				</div>

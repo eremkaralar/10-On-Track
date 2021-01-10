@@ -1,0 +1,26 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+            
+			<p>Do you really think "{{item}}" is not worth to be 10-Track?</p>
+
+			<form action="{% url 'delete_habit' item.id  %}" method="POST">
+				
+				{% csrf_token %}
+				<a class="btn btn-primary" href="{% url 'habits' %}">As though,it better stays!</a>
+
+				<button class="btn btn-danger" type="submit">Delete it anyway.</button>
+            </form>
+            
+        
+        </div>
+	</div>
+</div>
+
+{% endblock %}

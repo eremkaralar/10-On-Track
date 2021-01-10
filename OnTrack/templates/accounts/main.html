@@ -7,9 +7,22 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 	<link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
+	<style>
+		h1 {
+	   text-align: center;
+		 }   
+		 .card-body {
+		 background: linear-gradient(to left, #33ccff 0%, #ff99cc 100%); 
+		 text-align: center;
+		 
+		 }
 
+		 .h5{
+			 font-size: .83em;
+		 }
+	 </style>    
 </head>
-<body>
+<body style="background : linear-gradient(to right, #33ccff 0%, #ff99cc 100%);">
 	{%  include 'accounts/navbar.html' %}
 	<div class="container-fluid">
 	{% block content %}

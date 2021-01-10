@@ -25,7 +25,7 @@ urlpatterns = [
 
 
     
-    #path('create_goal/', views.createGoals, name="create_goal"),  
+  
 	
     
 
